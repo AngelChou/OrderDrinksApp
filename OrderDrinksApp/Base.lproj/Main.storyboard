@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FmY-ub-5Vc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gid-fO-68u">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--可不可熟成紅茶 Menu-->
+        <!--可不可熟成紅茶-->
         <scene sceneID="UDl-cj-LvE">
             <objects>
                 <tableViewController id="0sE-c2-h3a" customClass="DrinksTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,7 +42,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="OFZ-dT-MQr" kind="show" id="BnN-cB-utB"/>
+                                    <segue destination="OFZ-dT-MQr" kind="show" id="gWJ-rN-xlZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,22 +51,18 @@
                             <outlet property="delegate" destination="0sE-c2-h3a" id="umg-ln-Dhw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="可不可熟成紅茶 Menu" id="I9l-Yv-MD4">
-                        <barButtonItem key="rightBarButtonItem" title="訂單明細" id="DEI-Jx-rAA">
-                            <connections>
-                                <segue destination="DZb-RG-CtJ" kind="show" id="XA8-cM-uoK"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="可不可熟成紅茶" id="I9l-Yv-MD4">
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="YWi-9w-sLn"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOX-Du-5xK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="263.768115942029" y="102.45535714285714"/>
+            <point key="canvasLocation" x="1618.840579710145" y="-709.15178571428567"/>
         </scene>
-        <!--Drink Detail Table View Controller-->
+        <!--我的訂單-->
         <scene sceneID="Qvi-db-Iqc">
             <objects>
-                <tableViewController id="OFZ-dT-MQr" customClass="DrinkDetailTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="我的訂單" id="OFZ-dT-MQr" customClass="DrinkDetailTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nI4-eI-eb6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,9 +122,9 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fi4-NW-q5u">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwZ-Lf-5x2">
                                                             <rect key="frame" x="61" y="0.0" width="293" height="26"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -281,28 +277,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="78" id="DjH-l0-z0o">
-                                        <rect key="frame" x="0.0" y="468" width="414" height="78"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DjH-l0-z0o" id="98K-eL-Czf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="77.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMF-0H-sAk">
-                                                    <rect key="frame" x="166" y="21" width="82" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <state key="normal" title="送出訂單"/>
-                                                    <connections>
-                                                        <action selector="SendOrder:" destination="OFZ-dT-MQr" eventType="touchUpInside" id="yOu-MO-5Uo"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="tMF-0H-sAk" firstAttribute="centerX" secondItem="98K-eL-Czf" secondAttribute="centerX" id="2pR-rF-0Mp"/>
-                                                <constraint firstItem="tMF-0H-sAk" firstAttribute="centerY" secondItem="98K-eL-Czf" secondAttribute="centerY" id="QVA-VN-MOm"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -311,9 +285,16 @@
                             <outlet property="delegate" destination="OFZ-dT-MQr" id="ukH-pf-pIV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="飲料訂購單" id="hZA-Dg-kns">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="MY8-Nq-PkT">
+                            <connections>
+                                <action selector="doneButtonClicked:" destination="OFZ-dT-MQr" id="MZd-80-o6x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="DrinkLabel" destination="fi4-NW-q5u" id="rew-qj-uuL"/>
                         <outlet property="NameTextField" destination="1tG-QJ-lcp" id="bEk-xG-tvy"/>
+                        <outlet property="drinkLabel" destination="EwZ-Lf-5x2" id="SaW-Tc-S6F"/>
                         <outlet property="iceSegment" destination="fGG-UG-fIe" id="EUI-AO-OKX"/>
                         <outlet property="pearlSwitch" destination="PJW-aY-HlI" id="Xq2-iy-uar"/>
                         <outlet property="sizeSegment" destination="Hl4-vH-opf" id="faV-AP-7py"/>
@@ -322,12 +303,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNe-3I-aTO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979.71014492753636" y="105.80357142857143"/>
+            <point key="canvasLocation" x="2436" y="-709"/>
         </scene>
-        <!--Order List Table View Controller-->
+        <!--訂單明細-->
         <scene sceneID="AIp-9s-ueK">
             <objects>
-                <tableViewController id="DZb-RG-CtJ" customClass="OrderListTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="訂單明細" id="DZb-RG-CtJ" customClass="OrderListTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="N25-hn-VlW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,15 +337,23 @@
                             <outlet property="delegate" destination="DZb-RG-CtJ" id="PYW-AR-W1N"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="訂購明細" id="IY1-zo-eGd"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="MN8-gr-QEm">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                    <connections>
+                        <outlet property="refreshOrderListControl" destination="MN8-gr-QEm" id="zbP-Ev-Ti5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sw0-cB-Xw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714.4927536231885" y="105.80357142857143"/>
+            <point key="canvasLocation" x="1619" y="15"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Menu-->
         <scene sceneID="TDl-l3-EIs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FmY-ub-5Vc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Menu" image="lemonade" id="JUh-W3-12z"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JFy-5E-WzC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -377,7 +366,48 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X21-LY-KR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-646.37681159420299" y="102.45535714285714"/>
+            <point key="canvasLocation" x="839.13043478260875" y="-709.15178571428567"/>
+        </scene>
+        <!--Orders-->
+        <scene sceneID="VIl-cB-2zy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iow-Ts-qMi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Orders" image="order" id="qxk-4X-c9a"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LTd-6r-haR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DZb-RG-CtJ" kind="relationship" relationship="rootViewController" id="GS8-aw-THY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aa2-Jc-Vy8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="839" y="15"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="aXA-gJ-zxI">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gid-fO-68u" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Voi-wx-UoO">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="FmY-ub-5Vc" kind="relationship" relationship="viewControllers" id="6Nu-4H-NLB"/>
+                        <segue destination="Iow-Ts-qMi" kind="relationship" relationship="viewControllers" id="n9v-uh-4p3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wB8-PV-UnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71.014492753623188" y="-709.15178571428567"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lemonade" width="26.666666030883789" height="26.666666030883789"/>
+        <image name="order" width="26.666666030883789" height="26.666666030883789"/>
+    </resources>
 </document>
