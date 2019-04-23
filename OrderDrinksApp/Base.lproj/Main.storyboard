@@ -303,7 +303,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNe-3I-aTO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="-709"/>
+            <point key="canvasLocation" x="2481" y="-402"/>
         </scene>
         <!--訂單明細-->
         <scene sceneID="AIp-9s-ueK">
@@ -444,6 +444,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="keg-hg-sB8"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="aWb-BS-SiJ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>

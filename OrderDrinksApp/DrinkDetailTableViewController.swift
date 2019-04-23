@@ -36,7 +36,7 @@ class DrinkDetailTableViewController: UITableViewController {
             pearlSwitch.isOn = order.peral == "加珍珠" ? true : false
         }
         
-        // 設定ActivityIndicator
+        // 設定Act ivityIndicator
         refreshView = UIActivityIndicatorView(style: .whiteLarge)
         refreshView.color = .gray
         refreshView.center = self.tableView.center

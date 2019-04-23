@@ -69,8 +69,11 @@ class OrderListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let order = orders[indexPath.row]
-        // 顯示確認視窗
+        
+        // 建立確認視窗
         let controller = UIAlertController(title: "\(order.name):\(order.drink)", message: "確定要刪除這筆訂單嗎？", preferredStyle: .alert)
+        
+        // 如果按OK才做刪除的動作
         let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             OrderController.shared.delete(order: order) { (msg) in
                 print("\(order.name):\(order.drink) \(msg)")
@@ -79,7 +82,10 @@ class OrderListTableViewController: UITableViewController {
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
-        let cancelAction = UIAlertAction(title: "Cacenl", style: .default, handler: nil)
+        //若按Cancel則什麼都不做
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        // 顯示確認視窗
         controller.addAction(okAction)
         controller.addAction(cancelAction)
         present(controller, animated: true, completion: nil)
