@@ -330,6 +330,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="OFZ-dT-MQr" kind="show" id="1PO-Tc-aGa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -339,6 +342,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="訂購明細" id="IY1-zo-eGd"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="MN8-gr-QEm">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
@@ -393,6 +397,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gid-fO-68u" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Voi-wx-UoO">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -405,9 +410,76 @@
             </objects>
             <point key="canvasLocation" x="-71.014492753623188" y="-709.15178571428567"/>
         </scene>
+        <!--Report Table View Controller-->
+        <scene sceneID="CkJ-v1-wQ6">
+            <objects>
+                <tableViewController id="fCn-fm-3VE" customClass="ReportTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FKA-Xb-O3E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportCellId" textLabel="QYo-Xo-aov" style="IBUITableViewCellStyleDefault" id="6CT-MF-Lkd">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6CT-MF-Lkd" id="oUo-2o-e6l">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QYo-Xo-aov">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fCn-fm-3VE" id="nbv-lZ-E13"/>
+                            <outlet property="delegate" destination="fCn-fm-3VE" id="t3M-ga-o12"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="keg-hg-sB8"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="aWb-BS-SiJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                    <connections>
+                        <outlet property="refreshReportControl" destination="aWb-BS-SiJ" id="jSZ-Ul-i3O"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="61R-Lq-R6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1619" y="735"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="TLx-it-3KL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HdN-Sm-jea" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Report" image="growth" id="vz8-ll-BBc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VFZ-5p-nwD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fCn-fm-3VE" kind="relationship" relationship="rootViewController" id="v2v-lT-BIn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Wk-SU-Plm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="735"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="growth" width="26.666666030883789" height="26.666666030883789"/>
         <image name="lemonade" width="26.666666030883789" height="26.666666030883789"/>
         <image name="order" width="26.666666030883789" height="26.666666030883789"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1PO-Tc-aGa"/>
+    </inferredMetricsTieBreakers>
 </document>

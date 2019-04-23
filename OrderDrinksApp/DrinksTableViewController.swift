@@ -10,39 +10,28 @@ import UIKit
 
 class DrinksTableViewController: UITableViewController {
 
-    var drinkNames = [String]()
-    var drinkDescriptions = [String]()
+    var drinks = [Drink]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // 讀取飲料清單
-        if let asset = NSDataAsset(name: "可不可熟成紅茶"), let content = String(data: asset.data, encoding: .utf8) {
-            let drinks = content.components(separatedBy: "\n")
-            for drink in drinks {
-                let array = drink.components(separatedBy: ",")
-                drinkNames.append(array[0])
-                drinkDescriptions.append(array[1])
-            }
-        }
+        DrinkController.shared.loadMenu(filename: "可不可熟成紅茶")
+        self.drinks = DrinkController.shared.drinks
     }
     
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return drinkNames.count
+        return drinks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "drinkCellId", for: indexPath)
-
-        // Configure the cell...
-        let row = indexPath.row
-        cell.textLabel?.text = drinkNames[row]
-        cell.detailTextLabel?.text = drinkDescriptions[row]
-
+        let drink = drinks[indexPath.row]
+        cell.textLabel?.text = drink.name
+        cell.detailTextLabel?.text = drink.description
         return cell
     }
     
@@ -51,8 +40,8 @@ class DrinksTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let controller = segue.destination as? DrinkDetailTableViewController, let row = tableView.indexPathForSelectedRow?.row {
-            controller.drinkName = drinkNames[row]
-        } 
+            controller.drinkName = drinks[row].name
+        }
     }
     
 }
