@@ -17,18 +17,15 @@ class OrderListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 下載訂單
-        fetchData()
-        
         // 設定refreshControl
         refreshOrderListControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
-        
+
         // 設定ActivityIndicator
         refreshView = UIActivityIndicatorView(style: .whiteLarge)
         refreshView.color = .gray
         refreshView.center = self.tableView.center
         tableView.addSubview(refreshView)
-        
+
         // 啓動ActivityIndicator
         refreshView.startAnimating()
     }

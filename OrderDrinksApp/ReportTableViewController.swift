@@ -10,72 +10,69 @@ import UIKit
 
 class ReportTableViewController: UITableViewController {
 
+    @IBOutlet weak var reportNavItem: UINavigationItem!
     @IBOutlet weak var refreshReportControl: UIRefreshControl!
-    struct Report {
-        var drink: String
-        var count: Int
-        var detail: [Order]
-    }
+    
     var reports = [Report]()
-    var refreshView = UIActivityIndicatorView()
-    var ordersCount = 0
+    var orders = [Order]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshView = UIActivityIndicatorView(style: .whiteLarge)
-        refreshView.color = .gray
-        refreshView.center = self.tableView.center
-        tableView.addSubview(refreshView)
-        refreshView.startAnimating()
-        
-        OrderController.shared.getCount { (count) in
-            if let count = count {
-                self.ordersCount = count
-            }
-        }
-        
-        for drink in DrinkController.shared.drinks {
-            OrderController.shared.search(drinkName: drink.name) { (orders) in
-                if let orders = orders, orders.count != 0 {
-                    self.reports.append(ReportTableViewController.Report(drink: drink.name, count: orders.count, detail: orders))
-                    
-                    DispatchQueue.main.async {
-                        self.refreshView.stopAnimating()
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
-        
-        refreshReportControl.addTarget(self, action: #selector(searchDrink), for: .valueChanged)
+        // 取得Local訂單資料
+        self.orders = OrderController.shared.orders
+
+        // 設定refreshControl
+        refreshReportControl.addTarget(self, action: #selector(checkNewOrders), for: .valueChanged)
     }
     
-    @objc func searchDrink() {
+    override func viewWillAppear(_ animated: Bool) {
+        // 檢查是否有新訂單
+        checkNewOrders()
+    }
+    
+    @objc func checkNewOrders() {
+        // 如果Local訂單數和Remote訂單數不同，則重新下載訂單
         OrderController.shared.getCount { (count) in
-            if let count = count, count != self.ordersCount {
-                self.ordersCount = count
-                for drink in DrinkController.shared.drinks {
-                    OrderController.shared.search(drinkName: drink.name) { (orders) in
-                        if let orders = orders, orders.count != 0 {
-                            self.reports.append(ReportTableViewController.Report(drink: drink.name, count: orders.count, detail: orders))
-                        }
+            if let count = count, count != self.orders.count {
+                OrderController.shared.getAllData { (orders) in
+                    if let orders = orders {
+                        // 更新Local訂單
+                        self.orders = orders
+                        OrderController.shared.orders = orders
+                        
+                        // 使用更新的訂單建立報表
+                        self.getReports()
                     }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
                 }
-                DispatchQueue.main.async {
-                    self.refreshReportControl.endRefreshing()
-                }
-                
-            }
-            else {
-                DispatchQueue.main.async {
-                    self.refreshReportControl.endRefreshing()
-                }
+            } else {
+                // 使用現存的訂單建立報表
+                self.getReports()
             }
         }
+    }
+    
+    func getReports() {
+        // 產生報表
+        for drink in DrinkController.shared.drinks {
+            if let report = ReportController.shared.createReport(drink: drink, orders: orders) {
+                self.reports.append(report)
+            }
+        }
+        // 結算杯數和總價
+        let (count, price) = ReportController.shared.getTotalPrice(reports: self.reports)
+        self.navigationItem.title = "訂購總數：\(count)杯, 共\(price)元"
+        
+        self.refreshReportControl.endRefreshing()
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let report = reports[section]
+        return "\(report.drink): \(report.mediumCount)杯M, \(report.largeCount)杯L（\(report.price)元）"
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 
     // MARK: - Table view data source
@@ -95,64 +92,29 @@ class ReportTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reportCellId", for: indexPath)
 
         // Configure the cell...
-        let report = reports[indexPath.section]
-        let order = report.detail[indexPath.row]
+        let order = reports[indexPath.section].detail[indexPath.row]
         cell.textLabel?.text = "\(order.name): \(order.size)/\(order.ice)/\(order.sweetness)/\(order.peral)"
         return cell
     }
  
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let report = reports[section]
-        return "\(report.drink): \(report.count)杯"
-    }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+    @IBAction func actionButtonClicked(_ sender: Any) {
+        let controller = UIAlertController(title: "店家資訊", message: "可不可熟成紅茶 - 臺北伊通店", preferredStyle: .actionSheet)
+        let phoneNumber = "0225175510"
+        let phoneAction = UIAlertAction(title: "打電話給 \(phoneNumber)", style: .default) { (_) in
+            if let url = URL(string: "tel:\(phoneNumber)") {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    print("無法開啓URL")
+                }
+            } else {
+                print("連結錯誤")
+            }
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        controller.addAction(phoneAction)
+        controller.addAction(cancelAction)
+        present(controller, animated: true, completion: nil)
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

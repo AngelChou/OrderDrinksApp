@@ -25,6 +25,7 @@ struct OrderData: Encodable {
 class OrderController {
     static let shared = OrderController()
     let sheetdbAPI = "https://sheetdb.io/api/v1/6iuokay610mvj"
+    var orders = [Order]()
     
     // Get - All Data
     func getAllData(completion: @escaping ([Order]?) -> Void) {
@@ -32,6 +33,7 @@ class OrderController {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 let decoder = JSONDecoder()
                 if let data = data, let orders = try? decoder.decode([Order].self, from: data) {
+                    self.orders = orders
                     completion(orders)
                 } else {
                     completion(nil)

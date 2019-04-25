@@ -15,6 +15,7 @@
 		0B5610AC2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5610AB2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift */; };
 		0B5610B02265BF3900AAEAD0 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5610AF2265BF3900AAEAD0 /* Order.swift */; };
 		0B5610B22265CC6D00AAEAD0 /* OrderListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5610B12265CC6D00AAEAD0 /* OrderListTableViewController.swift */; };
+		0B7E0AF0227187AE00758734 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E0AEF227187AE00758734 /* Report.swift */; };
 		0BB18ECC226DB8CB0014D649 /* ReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */; };
 		0BB18ECE226DEAD20014D649 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB18ECD226DEAD20014D649 /* Drink.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		0B5610AB2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailTableViewController.swift; sourceTree = "<group>"; };
 		0B5610AF2265BF3900AAEAD0 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		0B5610B12265CC6D00AAEAD0 /* OrderListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListTableViewController.swift; sourceTree = "<group>"; };
+		0B7E0AEF227187AE00758734 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewController.swift; sourceTree = "<group>"; };
 		0BB18ECD226DEAD20014D649 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 				0B5610B12265CC6D00AAEAD0 /* OrderListTableViewController.swift */,
 				0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */,
 				0BB18ECD226DEAD20014D649 /* Drink.swift */,
+				0B7E0AEF227187AE00758734 /* Report.swift */,
 			);
 			path = OrderDrinksApp;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				0B5610B22265CC6D00AAEAD0 /* OrderListTableViewController.swift in Sources */,
 				0BB18ECC226DB8CB0014D649 /* ReportTableViewController.swift in Sources */,
 				0B5610A822658A9900AAEAD0 /* DrinksTableViewController.swift in Sources */,
+				0B7E0AF0227187AE00758734 /* Report.swift in Sources */,
 				0B561096226565EF00AAEAD0 /* AppDelegate.swift in Sources */,
 				0B5610B02265BF3900AAEAD0 /* Order.swift in Sources */,
 				0BB18ECE226DEAD20014D649 /* Drink.swift in Sources */,

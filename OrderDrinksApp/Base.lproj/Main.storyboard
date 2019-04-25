@@ -404,6 +404,7 @@
                     <connections>
                         <segue destination="FmY-ub-5Vc" kind="relationship" relationship="viewControllers" id="6Nu-4H-NLB"/>
                         <segue destination="Iow-Ts-qMi" kind="relationship" relationship="viewControllers" id="n9v-uh-4p3"/>
+                        <segue destination="HdN-Sm-jea" kind="relationship" relationship="viewControllers" id="9Rg-wZ-vKI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wB8-PV-UnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -419,7 +420,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportCellId" textLabel="QYo-Xo-aov" style="IBUITableViewCellStyleDefault" id="6CT-MF-Lkd">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="reportCellId" textLabel="QYo-Xo-aov" style="IBUITableViewCellStyleDefault" id="6CT-MF-Lkd">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6CT-MF-Lkd" id="oUo-2o-e6l">
@@ -442,13 +443,20 @@
                             <outlet property="delegate" destination="fCn-fm-3VE" id="t3M-ga-o12"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="keg-hg-sB8"/>
+                    <navigationItem key="navigationItem" id="keg-hg-sB8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Vbi-pE-BRF">
+                            <connections>
+                                <action selector="actionButtonClicked:" destination="fCn-fm-3VE" id="y4F-sz-W5h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="aWb-BS-SiJ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
                         <outlet property="refreshReportControl" destination="aWb-BS-SiJ" id="jSZ-Ul-i3O"/>
+                        <outlet property="reportNavItem" destination="keg-hg-sB8" id="55q-lP-Umf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="61R-Lq-R6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
