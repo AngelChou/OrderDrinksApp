@@ -20,7 +20,6 @@ class DrinksTableViewController: UITableViewController {
         self.drinks = DrinkController.shared.drinks
     }
     
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

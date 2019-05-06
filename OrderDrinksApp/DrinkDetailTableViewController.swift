@@ -15,6 +15,7 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
     var order: Order?
     var refreshView = UIActivityIndicatorView()
     var drinkIndex = 0
+    var drinks = [Drink]()
     
     // MARK: - IBOutlets
     @IBOutlet weak var NameTextField: UITextField!
@@ -28,25 +29,16 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //取得飲料清單
+        drinks = DrinkController.shared.drinks
+        
         if let drinkName = drinkName {
             // 若是從飲料Menu過來，會得到飲料名稱
-            for (i, drink) in DrinkController.shared.drinks.enumerated() {
-                if drink.name == drinkName {
-                    drinkIndex = i
-                    drinkPickerView.selectRow(drinkIndex, inComponent: 0, animated: true)
-                    break
-                }
-            }
+            updatePickerView(name: drinkName)
         } else if let order = order {
             //若是從訂購明細過來，會得到一筆訂單資料
             NameTextField.text = order.name
-            for (i, drink) in DrinkController.shared.drinks.enumerated() {
-                if drink.name == order.drink {
-                    drinkIndex = i
-                    drinkPickerView.selectRow(drinkIndex, inComponent: 0, animated: true)
-                    break
-                }
-            }
+            updatePickerView(name: order.drink)
             sizeSegment.selectedSegmentIndex = convertStringToIndex(str: order.size)
             sweetSegment.selectedSegmentIndex = convertStringToIndex(str: order.sweetness)
             iceSegment.selectedSegmentIndex = convertStringToIndex(str: order.ice)
@@ -58,6 +50,14 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
         refreshView.color = .gray
         refreshView.center = self.tableView.center
         tableView.addSubview(refreshView)
+        
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if event?.subtype == .motionShake {
+            let row = Int.random(in: 0...drinks.count)
+            updatePickerView(row: row)
+        }
     }
     
     // MARK: - User defined functions
@@ -93,6 +93,20 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
         present(controller, animated: true, completion: nil)
     }
     
+    func updatePickerView(row: Int) {
+        drinkPickerView.selectRow(row, inComponent: 0, animated: true)
+        drinkIndex = row
+    }
+    
+    func updatePickerView(name: String) {
+        for (i, drink) in drinks.enumerated() {
+            if drink.name == name {
+                updatePickerView(row: i)
+                break
+            }
+        }
+    }
+    
     // MARK: - IBActions
     
     @IBAction func closeKeyboard(_ sender: Any) {
@@ -114,7 +128,7 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
         if let name = NameTextField.text{
     
             // 品項
-            let drinkName = DrinkController.shared.drinks[drinkIndex].name
+            let drinkName = drinks[drinkIndex].name
             
             // 容量
             let size = convertIndexToString(index: sizeSegment.selectedSegmentIndex) { (index) -> String in
@@ -187,12 +201,12 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return DrinkController.shared.drinks.count
+        return drinks.count
     }
     
     // MARK: - Picker view delegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return DrinkController.shared.drinks[row].name
+        return drinks[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
