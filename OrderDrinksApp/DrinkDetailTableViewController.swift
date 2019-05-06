@@ -8,28 +8,45 @@
 
 import UIKit
 
-class DrinkDetailTableViewController: UITableViewController {
+class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    // MARK: - Class properties
     var drinkName: String?
     var order: Order?
     var refreshView = UIActivityIndicatorView()
+    var drinkIndex = 0
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var NameTextField: UITextField!
-    @IBOutlet weak var drinkLabel: UILabel!
     @IBOutlet weak var sizeSegment: UISegmentedControl!
     @IBOutlet weak var sweetSegment: UISegmentedControl!
     @IBOutlet weak var iceSegment: UISegmentedControl!
     @IBOutlet weak var pearlSwitch: UISwitch!
+    @IBOutlet weak var drinkPickerView: UIPickerView!
     
+    // MARK: - View controller function
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let drinkName = drinkName {
             // 若是從飲料Menu過來，會得到飲料名稱
-            drinkLabel.text = drinkName
+            for (i, drink) in DrinkController.shared.drinks.enumerated() {
+                if drink.name == drinkName {
+                    drinkIndex = i
+                    drinkPickerView.selectRow(drinkIndex, inComponent: 0, animated: true)
+                    break
+                }
+            }
         } else if let order = order {
             //若是從訂購明細過來，會得到一筆訂單資料
             NameTextField.text = order.name
-            drinkLabel.text = order.drink
+            for (i, drink) in DrinkController.shared.drinks.enumerated() {
+                if drink.name == order.drink {
+                    drinkIndex = i
+                    drinkPickerView.selectRow(drinkIndex, inComponent: 0, animated: true)
+                    break
+                }
+            }
             sizeSegment.selectedSegmentIndex = convertStringToIndex(str: order.size)
             sweetSegment.selectedSegmentIndex = convertStringToIndex(str: order.sweetness)
             iceSegment.selectedSegmentIndex = convertStringToIndex(str: order.ice)
@@ -42,6 +59,8 @@ class DrinkDetailTableViewController: UITableViewController {
         refreshView.center = self.tableView.center
         tableView.addSubview(refreshView)
     }
+    
+    // MARK: - User defined functions
     
     func convertStringToIndex(str: String) -> Int {
         switch str {
@@ -74,6 +93,8 @@ class DrinkDetailTableViewController: UITableViewController {
         present(controller, animated: true, completion: nil)
     }
     
+    // MARK: - IBActions
+    
     @IBAction func closeKeyboard(_ sender: Any) {
     }
     
@@ -89,8 +110,13 @@ class DrinkDetailTableViewController: UITableViewController {
         self.view.endEditing(true)
         
         // 從UI元件取得訂單資料
-        if let name = NameTextField.text, let drinkName = drinkLabel.text {
+        
+        if let name = NameTextField.text{
+    
+            // 品項
+            let drinkName = DrinkController.shared.drinks[drinkIndex].name
             
+            // 容量
             let size = convertIndexToString(index: sizeSegment.selectedSegmentIndex) { (index) -> String in
                 if index == 0 {
                     return "M"
@@ -99,6 +125,7 @@ class DrinkDetailTableViewController: UITableViewController {
                 }
             }
             
+            // 甜度
             let sweetness = convertIndexToString(index: sweetSegment.selectedSegmentIndex) { (index) -> String in
                 switch(index) {
                 case 1:
@@ -114,6 +141,7 @@ class DrinkDetailTableViewController: UITableViewController {
                 }
             }
             
+            // 冰塊
             let ice = convertIndexToString(index: iceSegment.selectedSegmentIndex) { (index) -> String in
                 switch(index) {
                 case 1:
@@ -129,6 +157,7 @@ class DrinkDetailTableViewController: UITableViewController {
                 }
             }
             
+            // 配料
             let pearl = pearlSwitch.isOn ? "加珍珠" : "不加珍珠"
             
             // 建立一筆訂單
@@ -149,5 +178,24 @@ class DrinkDetailTableViewController: UITableViewController {
             // 顯示ActivityIndicator
             refreshView.startAnimating()
         }
+    }
+    
+    // MARK: - Picker view data source
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return DrinkController.shared.drinks.count
+    }
+    
+    // MARK: - Picker view delegate
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return DrinkController.shared.drinks[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        drinkIndex = row
     }
 }

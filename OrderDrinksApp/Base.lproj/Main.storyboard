@@ -106,36 +106,37 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="78" id="D3f-71-kF1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="78" id="rAj-cr-O88">
                                         <rect key="frame" x="0.0" y="78" width="414" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D3f-71-kF1" id="XzW-ZC-deu">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rAj-cr-O88" id="SYg-sB-8XB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="77.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="363-KT-UNM">
-                                                    <rect key="frame" x="30" y="26" width="354" height="26"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mQa-As-dwS">
+                                                    <rect key="frame" x="30" y="11" width="354" height="56"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="飲料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UG-zw-ulp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="26"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="飲料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPX-aP-yzs">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="56"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwZ-Lf-5x2">
-                                                            <rect key="frame" x="61" y="0.0" width="293" height="26"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="tZW-by-HeL">
+                                                            <rect key="frame" x="61" y="0.0" width="293" height="56"/>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="OFZ-dT-MQr" id="boK-fs-Oz6"/>
+                                                                <outlet property="delegate" destination="OFZ-dT-MQr" id="60h-wV-VSm"/>
+                                                            </connections>
+                                                        </pickerView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="363-KT-UNM" secondAttribute="bottom" constant="15" id="SBj-m5-xHZ"/>
-                                                <constraint firstItem="363-KT-UNM" firstAttribute="leading" secondItem="XzW-ZC-deu" secondAttribute="leadingMargin" constant="10" id="krY-2Y-1Rd"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="363-KT-UNM" secondAttribute="trailing" constant="10" id="sJw-qv-iXw"/>
-                                                <constraint firstItem="363-KT-UNM" firstAttribute="top" secondItem="XzW-ZC-deu" secondAttribute="topMargin" constant="15" id="tyX-nV-G0l"/>
+                                                <constraint firstItem="mQa-As-dwS" firstAttribute="top" secondItem="SYg-sB-8XB" secondAttribute="topMargin" id="1BZ-YA-U0A"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mQa-As-dwS" secondAttribute="bottom" id="2PG-8d-YMi"/>
+                                                <constraint firstItem="mQa-As-dwS" firstAttribute="leading" secondItem="SYg-sB-8XB" secondAttribute="leadingMargin" constant="10" id="gaJ-Q0-218"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mQa-As-dwS" secondAttribute="trailing" constant="10" id="lDe-rB-r3A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -294,7 +295,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="NameTextField" destination="1tG-QJ-lcp" id="bEk-xG-tvy"/>
-                        <outlet property="drinkLabel" destination="EwZ-Lf-5x2" id="SaW-Tc-S6F"/>
+                        <outlet property="drinkPickerView" destination="tZW-by-HeL" id="6qT-rm-Xe5"/>
                         <outlet property="iceSegment" destination="fGG-UG-fIe" id="EUI-AO-OKX"/>
                         <outlet property="pearlSwitch" destination="PJW-aY-HlI" id="Xq2-iy-uar"/>
                         <outlet property="sizeSegment" destination="Hl4-vH-opf" id="faV-AP-7py"/>
@@ -303,7 +304,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNe-3I-aTO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2481" y="-402"/>
+            <point key="canvasLocation" x="2479.7101449275365" y="-402.45535714285711"/>
         </scene>
         <!--訂單明細-->
         <scene sceneID="AIp-9s-ueK">
