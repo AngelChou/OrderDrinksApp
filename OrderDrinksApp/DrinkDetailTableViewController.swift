@@ -50,12 +50,11 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
         refreshView.color = .gray
         refreshView.center = self.tableView.center
         tableView.addSubview(refreshView)
-        
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if event?.subtype == .motionShake {
-            let row = Int.random(in: 0...drinks.count)
+            let row = Int.random(in: 0..<drinks.count)
             updatePickerView(row: row)
         }
     }
@@ -93,18 +92,20 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
         present(controller, animated: true, completion: nil)
     }
     
-    func updatePickerView(row: Int) {
-        drinkPickerView.selectRow(row, inComponent: 0, animated: true)
-        drinkIndex = row
-    }
-    
     func updatePickerView(name: String) {
+        // 找出飲料在列表中的index
         for (i, drink) in drinks.enumerated() {
             if drink.name == name {
                 updatePickerView(row: i)
                 break
             }
         }
+    }
+    
+    func updatePickerView(row: Int) {
+        // 讓pickerView顯示選定的index項目
+        drinkPickerView.selectRow(row, inComponent: 0, animated: true)
+        drinkIndex = row
     }
     
     // MARK: - IBActions
