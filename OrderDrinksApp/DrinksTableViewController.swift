@@ -17,8 +17,8 @@ class DrinksTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // 讀取飲料清單
-        DrinkController.shared.loadMenu(filename: "可不可熟成紅茶")
-        self.drinks = DrinkController.shared.drinks
+//        DrinkController.shared.loadMenu(filename: "可不可熟成紅茶")
+//        self.drinks = DrinkController.shared.drinks
         DrinkController.shared.getStoreList { (stores) in
             if let stores = stores {
                 self.stores = stores
@@ -51,7 +51,9 @@ class DrinksTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let controller = segue.destination as? DrinkDetailTableViewController, let row = tableView.indexPathForSelectedRow?.row {
-            controller.drinkName = drinks[row].name
+//            controller.drinkName = drinks[row].name
+            
+            controller.store = stores[row]
         }
     }
     

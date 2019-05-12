@@ -31,8 +31,8 @@ class ReportController {
                     report.largeCount = report.largeCount + 1
                 }
                 let pearl = order.peral == "加珍珠" ? 1 : 0
-                let mPrice = report.mediumCount * drink.mediumPrice
-                let lPrice = report.largeCount * (drink.largePrice ?? 0)
+                let mPrice = report.mediumCount * (Int(drink.mediumPrice) ?? 0)
+                let lPrice = report.largeCount * (Int(drink.largePrice ?? "0") ?? 0)
                 report.price = mPrice + lPrice + (pearl * 10)
                 report.detail.append(order)
             }

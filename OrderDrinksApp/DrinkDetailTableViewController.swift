@@ -16,6 +16,7 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
     var refreshView = UIActivityIndicatorView()
     var drinkIndex = 0
     var drinks = [Drink]()
+    var store: String?
     
     // MARK: - IBOutlets
     @IBOutlet weak var NameTextField: UITextField!
@@ -29,12 +30,25 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //取得飲料清單
-        drinks = DrinkController.shared.drinks
+//        //取得飲料清單
+//        drinks = DrinkController.shared.drinks
         
-        if let drinkName = drinkName {
-            // 若是從飲料Menu過來，會得到飲料名稱
-            updatePickerView(name: drinkName)
+//        if let drinkName = drinkName {
+//            // 若是從飲料Menu過來，會得到飲料名稱
+//            updatePickerView(name: drinkName)
+        if let store = store {
+            // 若是從店家清單過來，會得到店家名稱
+            DrinkController.shared.getStoreMenu(store: store) { (drinks) in
+                if let drinks = drinks {
+                    self.drinks = drinks
+                    DispatchQueue.main.async {
+//                        self.updatePickerView(row: 0)
+                        
+                        self.drinkPickerView.reloadAllComponents()
+//                        self.drinkPickerView.selectRow(0, inComponent: 0, animated: true)
+                    }
+                }
+            }
         } else if let order = order {
             //若是從訂購明細過來，會得到一筆訂單資料
             NameTextField.text = order.name
