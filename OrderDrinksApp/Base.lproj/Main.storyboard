@@ -12,7 +12,7 @@
         <!--店家清單-->
         <scene sceneID="UDl-cj-LvE">
             <objects>
-                <tableViewController id="0sE-c2-h3a" customClass="DrinksTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="0sE-c2-h3a" customClass="StoreTableViewController" customModule="OrderDrinksApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="enb-f2-IU7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

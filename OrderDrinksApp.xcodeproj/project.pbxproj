@@ -18,6 +18,8 @@
 		0B7E0AF0227187AE00758734 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E0AEF227187AE00758734 /* Report.swift */; };
 		0BB18ECC226DB8CB0014D649 /* ReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */; };
 		0BB18ECE226DEAD20014D649 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB18ECD226DEAD20014D649 /* Drink.swift */; };
+		0BB7EDD52289947F00D72514 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7EDD42289947F00D72514 /* Store.swift */; };
+		0BB7EDD72289963300D72514 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7EDD62289963300D72514 /* StoreTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +29,15 @@
 		0B56109C226565F200AAEAD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B56109F226565F200AAEAD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B5610A1226565F200AAEAD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B5610A722658A9900AAEAD0 /* DrinksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksTableViewController.swift; sourceTree = "<group>"; };
-		0B5610AB2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailTableViewController.swift; sourceTree = "<group>"; };
-		0B5610AF2265BF3900AAEAD0 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		0B5610B12265CC6D00AAEAD0 /* OrderListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListTableViewController.swift; sourceTree = "<group>"; };
-		0B7E0AEF227187AE00758734 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
-		0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewController.swift; sourceTree = "<group>"; };
+		0B5610A722658A9900AAEAD0 /* DrinksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrinksTableViewController.swift; path = ../DrinksTableViewController.swift; sourceTree = "<group>"; };
+		0B5610AB2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrinkDetailTableViewController.swift; path = ../DrinkDetailTableViewController.swift; sourceTree = "<group>"; };
+		0B5610AF2265BF3900AAEAD0 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Order.swift; path = ../Order.swift; sourceTree = "<group>"; };
+		0B5610B12265CC6D00AAEAD0 /* OrderListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderListTableViewController.swift; path = ../OrderListTableViewController.swift; sourceTree = "<group>"; };
+		0B7E0AEF227187AE00758734 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Report.swift; path = ../Report.swift; sourceTree = "<group>"; };
+		0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportTableViewController.swift; path = ../ReportTableViewController.swift; sourceTree = "<group>"; };
 		0BB18ECD226DEAD20014D649 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		0BB7EDD42289947F00D72514 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ../Store.swift; sourceTree = "<group>"; };
+		0BB7EDD62289963300D72514 /* StoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreTableViewController.swift; path = ../StoreTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,18 +72,36 @@
 			children = (
 				0B561095226565EF00AAEAD0 /* AppDelegate.swift */,
 				0B561099226565EF00AAEAD0 /* Main.storyboard */,
+				0BB7EDD922899AB700D72514 /* Models */,
+				0BB7EDD822899A4E00D72514 /* View Controllers */,
 				0B56109C226565F200AAEAD0 /* Assets.xcassets */,
 				0B56109E226565F200AAEAD0 /* LaunchScreen.storyboard */,
 				0B5610A1226565F200AAEAD0 /* Info.plist */,
-				0B5610A722658A9900AAEAD0 /* DrinksTableViewController.swift */,
-				0B5610AB2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift */,
-				0B5610AF2265BF3900AAEAD0 /* Order.swift */,
-				0B5610B12265CC6D00AAEAD0 /* OrderListTableViewController.swift */,
-				0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */,
-				0BB18ECD226DEAD20014D649 /* Drink.swift */,
-				0B7E0AEF227187AE00758734 /* Report.swift */,
 			);
 			path = OrderDrinksApp;
+			sourceTree = "<group>";
+		};
+		0BB7EDD822899A4E00D72514 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B5610A722658A9900AAEAD0 /* DrinksTableViewController.swift */,
+				0B5610AB2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift */,
+				0B5610B12265CC6D00AAEAD0 /* OrderListTableViewController.swift */,
+				0BB18ECB226DB8CA0014D649 /* ReportTableViewController.swift */,
+				0BB7EDD62289963300D72514 /* StoreTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0BB7EDD922899AB700D72514 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B5610AF2265BF3900AAEAD0 /* Order.swift */,
+				0BB18ECD226DEAD20014D649 /* Drink.swift */,
+				0B7E0AEF227187AE00758734 /* Report.swift */,
+				0BB7EDD42289947F00D72514 /* Store.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,11 +183,13 @@
 				0B5610B22265CC6D00AAEAD0 /* OrderListTableViewController.swift in Sources */,
 				0BB18ECC226DB8CB0014D649 /* ReportTableViewController.swift in Sources */,
 				0B5610A822658A9900AAEAD0 /* DrinksTableViewController.swift in Sources */,
+				0BB7EDD52289947F00D72514 /* Store.swift in Sources */,
 				0B7E0AF0227187AE00758734 /* Report.swift in Sources */,
 				0B561096226565EF00AAEAD0 /* AppDelegate.swift in Sources */,
 				0B5610B02265BF3900AAEAD0 /* Order.swift in Sources */,
 				0BB18ECE226DEAD20014D649 /* Drink.swift in Sources */,
 				0B5610AC2265AA6700AAEAD0 /* DrinkDetailTableViewController.swift in Sources */,
+				0BB7EDD72289963300D72514 /* StoreTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

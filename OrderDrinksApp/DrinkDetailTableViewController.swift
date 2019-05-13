@@ -38,7 +38,7 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
 //            updatePickerView(name: drinkName)
         if let store = store {
             // 若是從店家清單過來，會得到店家名稱
-            DrinkController.shared.getStoreMenu(store: store) { (drinks) in
+            StoreController.shared.getStoreMenu(store: store) { (drinks) in
                 if let drinks = drinks {
                     self.drinks = drinks
                     DispatchQueue.main.async {
