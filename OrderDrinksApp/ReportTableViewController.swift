@@ -62,8 +62,9 @@ class ReportTableViewController: UITableViewController {
         // 結算杯數和總價
         let (count, price) = ReportController.shared.getTotalPrice(reports: self.reports)
         self.navigationItem.title = "訂購總數：\(count)杯, 共\(price)元"
-        
-        self.refreshReportControl.endRefreshing()
+        DispatchQueue.main.async {
+            self.refreshReportControl.endRefreshing()
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

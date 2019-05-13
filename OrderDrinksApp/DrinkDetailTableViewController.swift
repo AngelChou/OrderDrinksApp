@@ -10,14 +10,6 @@ import UIKit
 
 class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    // MARK: - Class properties
-    var drinkName: String?
-    var order: Order?
-    var refreshView = UIActivityIndicatorView()
-    var drinkIndex = 0
-    var drinks = [Drink]()
-    var store: String?
-    
     // MARK: - IBOutlets
     @IBOutlet weak var NameTextField: UITextField!
     @IBOutlet weak var sizeSegment: UISegmentedControl!
@@ -26,26 +18,32 @@ class DrinkDetailTableViewController: UITableViewController, UIPickerViewDelegat
     @IBOutlet weak var pearlSwitch: UISwitch!
     @IBOutlet weak var drinkPickerView: UIPickerView!
     
+    // MARK: - Class properties
+    var drinkName: String?
+    var order: Order?
+    var refreshView = UIActivityIndicatorView()
+    var drinkIndex = 0
+    var drinks = [Drink]()
+    var store: String?
+    
     // MARK: - View controller function
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        //取得飲料清單
-//        drinks = DrinkController.shared.drinks
+        //        //取得飲料清單
+        //        drinks = DrinkController.shared.drinks
+        //        if let drinkName = drinkName {
+        //            // 若是從飲料Menu過來，會得到飲料名稱
+        //            updatePickerView(name: drinkName)
         
-//        if let drinkName = drinkName {
-//            // 若是從飲料Menu過來，會得到飲料名稱
-//            updatePickerView(name: drinkName)
         if let store = store {
             // 若是從店家清單過來，會得到店家名稱
             StoreController.shared.getStoreMenu(store: store) { (drinks) in
                 if let drinks = drinks {
                     self.drinks = drinks
+                    DrinkController.shared.drinks = drinks
                     DispatchQueue.main.async {
-//                        self.updatePickerView(row: 0)
-                        
                         self.drinkPickerView.reloadAllComponents()
-//                        self.drinkPickerView.selectRow(0, inComponent: 0, animated: true)
                     }
                 }
             }
