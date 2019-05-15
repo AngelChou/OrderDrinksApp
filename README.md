@@ -11,16 +11,15 @@ Medium說明文章：
 3. 利用 UIRefreshControl 實現下拉更新：https://bit.ly/2UDMYIG
 4. 統計訂購結果：https://bit.ly/2V96bTa
 5. 使用pickerView選飲料、搖晃手機隨機選飲料：https://bit.ly/2V3Q5tW
+6. 讀取不同店家的Menu：https://bit.ly/2LKkDl0
 
 TODO：
 - 增加訂單備註：不用吸管、不用提袋...等
 - 加入搜尋功能 https://bit.ly/2ZwKIGS
-- 處理沒有網路連線的情況 https://bit.ly/2L2gdpj
-- 找不到資料時，顯示無資料的畫面 https://bit.ly/2VhWoOL
 - 抓資料遇到問題時，顯示相關錯誤訊息 
+  - 處理沒有網路連線的情況 https://bit.ly/2L2gdpj
+  - 找不到資料時，顯示無資料的畫面 https://bit.ly/2VhWoOL
 - 資料暫存的Cache功能 https://bit.ly/2URLBeu
-- 新增店家（可載入Menu）
-- 根據店家Menu修改飲料訂購頁面的細節
 - 新增訂購單（新增sheet）
 - 改用Firebase API https://bit.ly/2IVeE9U https://firebase.google.com
 - 加入帳號密碼登入頁面
